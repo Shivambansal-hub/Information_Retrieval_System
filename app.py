@@ -7,9 +7,9 @@ def user_input(user_question):
     st.session_state.chatHistory = response['chat_history']
     for i, message in enumerate(st.session_state.chatHistory):
         if i % 2 == 0:
-            st.write("User:", message)
+            st.write("User:", message.content)
         else:
-            st.write("AI:", message)
+            st.write("AI:", message.content)
 
 def main():
     st.set_page_config(page_title="Information Retrieval System", layout="wide")
