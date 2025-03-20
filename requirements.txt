@@ -1,6 +1,10 @@
-python-dotenv
-google-generativeai
+streamlit
 langchain
 PyPDF2
 faiss-cpu
-streamlit
+sentence-transformers
+transformers
+dotenv
+google-generativeai
+requests
+-e .

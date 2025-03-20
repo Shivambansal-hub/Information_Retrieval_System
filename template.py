@@ -2,8 +2,7 @@ import os
 from pathlib import Path
 import logging
 
-logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:')
-
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 list_of_files = [
     "src/__init__.py",
@@ -12,28 +11,20 @@ list_of_files = [
     "requirements.txt",
     "setup.py",
     "app.py",
-    "research/trails.py",
-    "trails.py",
-    "test.py"
-
+    "research/trails.ipynb"
 ]
-
-
 
 for filepath in list_of_files:
     filepath = Path(filepath)
-
     filedir, filename = os.path.split(filepath)
 
-    if filedir !="":
+    if filedir:  # Only create directory if filedir is not empty
         os.makedirs(filedir, exist_ok=True)
-        logging.info(f"Creating directory; {filedir} for the file: {filename}")
+        logging.info(f"Directory created: {filedir} for the file: {filename}")
 
-    if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
-        with open(filepath, "w") as f:
+    if not filepath.exists() or filepath.stat().st_size == 0:
+        with open(filepath, "w") as file:
             pass
-            logging.info(f"Creating empty file: {filepath}")
-
-
+        logging.info(f"File created: {filename}")
     else:
-        logging.info(f"{filename} is already exists")
+        logging.info(f"{filename} is already present in the directory")
